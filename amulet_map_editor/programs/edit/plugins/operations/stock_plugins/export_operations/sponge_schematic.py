@@ -9,6 +9,7 @@ from amulet.api.errors import ChunkLoadError
 from amulet.api.data_types import Dimension, OperationReturnType
 from amulet.level.formats.sponge_schem import SpongeSchemFormatWrapper
 
+from amulet_map_editor import lang
 from amulet_map_editor.api.wx.ui.version_select import VersionSelect
 from amulet_map_editor.programs.edit.api.operations import (
     SimpleOperationPanel,
@@ -37,7 +38,10 @@ class ExportSpongeSchematic(SimpleOperationPanel):
         self._path = options.get("path", "")
 
         self._schematic_version_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self._schematic_version_label = wx.StaticText(self, label="Schematic Version:")
+        self._schematic_version_label = wx.StaticText(
+            self,
+            label=lang.get("program_3d_edit.export.sponge_schematic.schematic_version"),
+        )
         self._schematic_version_choice = wx.Choice(self, choices=["2", "3"])
         self._schematic_version_choice.SetSelection(1)
         self._schematic_version_sizer.Add(
@@ -61,7 +65,7 @@ class ExportSpongeSchematic(SimpleOperationPanel):
         self._sizer.Add(
             self._version_define, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM | wx.EXPAND, 5
         )
-        self._add_run_button("Export")
+        self._add_run_button(lang.get("shared.export"))
         self.Layout()
 
     def disable(self):

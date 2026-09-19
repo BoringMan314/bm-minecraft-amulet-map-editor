@@ -9,6 +9,7 @@ from amulet.api.errors import ChunkLoadError
 from amulet.api.data_types import Dimension, OperationReturnType
 from amulet.level.formats.schematic import SchematicFormatWrapper
 
+from amulet_map_editor import lang
 from amulet_map_editor.api.wx.ui.version_select import PlatformSelect
 from amulet_map_editor.programs.edit.api.operations import (
     SimpleOperationPanel,
@@ -61,7 +62,7 @@ class ExportSchematic(SimpleOperationPanel):
             5,
         )
 
-        self._add_run_button("Export")
+        self._add_run_button(lang.get("shared.export"))
         self.Layout()
 
     def disable(self):

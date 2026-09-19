@@ -495,7 +495,9 @@ class PasteTool(wx.BoxSizer, DefaultBaseToolUI):
 
         add_line()
 
-        confirm_button = wx.Button(self._paste_panel, label="Confirm")
+        confirm_button = wx.Button(
+            self._paste_panel, label=lang.get("program_3d_edit.paste_tool.confirm_label")
+        )
         self._paste_sizer.Add(confirm_button, 0, BottomLeftRightExpand, 5)
         confirm_button.Bind(wx.EVT_BUTTON, self._paste_confirm)
 

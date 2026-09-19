@@ -9,6 +9,7 @@ from amulet.api.errors import ChunkLoadError
 from amulet.api.data_types import Dimension, OperationReturnType
 from amulet.level.formats.mcstructure import MCStructureFormatWrapper
 
+from amulet_map_editor import lang
 from amulet_map_editor.api.wx.ui.version_select import VersionSelect
 from amulet_map_editor.programs.edit.api.operations import (
     SimpleOperationPanel,
@@ -37,7 +38,9 @@ class ExportMCStructure(SimpleOperationPanel):
         self._path = options.get("path", "")
 
         self._format_version_sizer = wx.BoxSizer(wx.HORIZONTAL)
-        self._format_version_label = wx.StaticText(self, label="Format Version:")
+        self._format_version_label = wx.StaticText(
+            self, label=lang.get("program_3d_edit.export.mcstructure.format_version")
+        )
         self._format_version_choice = wx.Choice(self, choices=["1", "2"])
         self._format_version_choice.SetSelection(1)
         self._format_version_sizer.Add(
@@ -62,7 +65,7 @@ class ExportMCStructure(SimpleOperationPanel):
             self._version_define, 0, wx.LEFT | wx.RIGHT | wx.BOTTOM | wx.EXPAND, 5
         )
 
-        self._add_run_button("Export")
+        self._add_run_button(lang.get("shared.export"))
         self.Layout()
 
     def disable(self):

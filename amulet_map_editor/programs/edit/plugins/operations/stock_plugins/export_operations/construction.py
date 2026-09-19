@@ -9,6 +9,7 @@ from amulet.api.errors import ChunkLoadError
 from amulet.api.data_types import Dimension, OperationReturnType
 from amulet.level.formats.construction import ConstructionFormatWrapper
 
+from amulet_map_editor import lang
 from amulet_map_editor.api.wx.ui.version_select import VersionSelect
 from amulet_map_editor.programs.edit.api.operations import (
     SimpleOperationPanel,
@@ -44,7 +45,7 @@ class ExportConstruction(SimpleOperationPanel):
         )
         self._sizer.Add(self._version_define, 0, wx.ALL | wx.EXPAND, 5)
 
-        self._add_run_button("Export")
+        self._add_run_button(lang.get("shared.export"))
         self.Layout()
 
     def disable(self):
