@@ -270,6 +270,6 @@ class Waterlog(wx.Panel, DefaultOperationUI):
 
 
 export = {
-    "name": "Waterlog",  # the name of the plugin
+    "name": lang.get("program_3d_edit.operation.waterlog.name"),
     "operation": Waterlog,  # the actual function to call when running the plugin
 }

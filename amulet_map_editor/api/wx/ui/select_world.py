@@ -522,7 +522,14 @@ class WorldSelectUI(wx.Panel):
         else:
             del busy_msg
 
-        wx.MessageBox(lang.get("select_world.extracting_world_finished"), "Info", wx.OK)
+        with wx.MessageDialog(
+            self,
+            lang.get("select_world.extracting_world_finished"),
+            lang.get("shared.info"),
+            wx.OK,
+        ) as dialog:
+            dialog.SetOKLabel(lang.get("shared.ok"))
+            dialog.ShowModal()
 
         self.open_world_callback(extract_dir)
 

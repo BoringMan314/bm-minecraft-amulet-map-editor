@@ -83,7 +83,7 @@ class ExportSchematic(SimpleOperationPanel):
             fdir = ""
         with wx.FileDialog(
             self,
-            "Select Save Location",
+            lang.get("program_3d_edit.export.save_location"),
             defaultDir=fdir,
             defaultFile=fname,
             wildcard="Schematic file (*.schematic)|*.schematic",
@@ -99,11 +99,9 @@ class ExportSchematic(SimpleOperationPanel):
         self, world: "BaseLevel", dimension: Dimension, selection: SelectionGroup
     ) -> OperationReturnType:
         if len(selection.selection_boxes) == 0:
-            raise OperationError("No selection was given to export.")
+            raise OperationError(lang.get("program_3d_edit.export.no_selection"))
         elif len(selection.selection_boxes) != 1:
-            raise OperationError(
-                "The schematic format only supports a single selection box."
-            )
+            raise OperationError(lang.get("program_3d_edit.export.single_box_only"))
 
         path = self._path
         platform = self._platform_define.platform
@@ -113,7 +111,9 @@ class ExportSchematic(SimpleOperationPanel):
             wrapper.translation_manager = world.translation_manager
             wrapper_dimension = wrapper.dimensions[0]
             chunk_count = len(list(selection.chunk_locations()))
-            yield 0, f"Exporting {os.path.basename(path)}"
+            yield 0, lang.get("program_3d_edit.export.progress").format(
+                name=os.path.basename(path)
+            )
             for chunk_index, (cx, cz) in enumerate(selection.chunk_locations()):
                 try:
                     chunk = world.get_chunk(cx, cz, dimension)
@@ -125,11 +125,11 @@ class ExportSchematic(SimpleOperationPanel):
             wrapper.close()
         else:
             raise OperationError(
-                "Please specify a save location and platform in the options before running."
+                lang.get("program_3d_edit.export.missing_path_platform")
             )
 
 
 export = {
-    "name": "Export Schematic (legacy)",  # the name of the plugin
+    "name": lang.get("program_3d_edit.export.schematic.name"),
     "operation": ExportSchematic,  # the UI class to display
 }

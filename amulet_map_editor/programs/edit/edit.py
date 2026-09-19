@@ -102,7 +102,7 @@ class EditExtension(wx.Panel, BaseProgram):
     def _display_error(self, msg, tb):
         with TracebackDialog(
             self,
-            "Exception while setting up canvas",
+            lang.get("program_3d_edit.canvas.setup_exception"),
             msg,
             tb,
         ) as dialog:
@@ -197,14 +197,16 @@ class EditExtension(wx.Panel, BaseProgram):
         if unsaved_changes:
             msg = wx.MessageDialog(
                 self,
-                f"""There {
-                'is' if unsaved_changes == 1 else 'are'
-                } {unsaved_changes} unsaved change{
-                's' if unsaved_changes >= 2 else ''
-                } in {
-                self._world.level_wrapper.level_name
-                }. Would you like to save?""",
+                lang.get("program_3d_edit.close.unsaved_changes").format(
+                    count=unsaved_changes,
+                    name=self._world.level_wrapper.level_name,
+                ),
                 style=wx.YES_NO | wx.CANCEL | wx.CANCEL_DEFAULT,
+            )
+            msg.SetYesNoCancelLabels(
+                lang.get("shared.yes"),
+                lang.get("shared.no"),
+                lang.get("shared.cancel"),
             )
             log.debug(f"Showing MessageDialog at {msg.GetRect()}")
             response = msg.ShowModal()

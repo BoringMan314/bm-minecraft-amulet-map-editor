@@ -147,6 +147,6 @@ class Fill(wx.Panel, DefaultOperationUI):
 
 
 export = {
-    "name": "Fill",  # the name of the plugin
+    "name": lang.get("program_3d_edit.operation.fill.name"),
     "operation": Fill,  # the actual function to call when running the plugin
 }

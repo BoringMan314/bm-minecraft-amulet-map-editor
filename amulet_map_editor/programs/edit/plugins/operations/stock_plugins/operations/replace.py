@@ -226,6 +226,6 @@ class Replace(wx.Panel, DefaultOperationUI):
 
 
 export = {
-    "name": "Replace",  # the name of the plugin
+    "name": lang.get("program_3d_edit.operation.replace.name"),
     "operation": Replace,  # the actual function to call when running the plugin
 }

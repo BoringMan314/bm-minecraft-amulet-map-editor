@@ -67,7 +67,7 @@ class ExportConstruction(SimpleOperationPanel):
             fdir = ""
         with wx.FileDialog(
             self,
-            "Select Save Location",
+            lang.get("program_3d_edit.export.save_location"),
             defaultDir=fdir,
             defaultFile=fname,
             wildcard="Construction file (*.construction)|*.construction",
@@ -91,7 +91,9 @@ class ExportConstruction(SimpleOperationPanel):
             wrapper.translation_manager = world.translation_manager
             wrapper_dimension = wrapper.dimensions[0]
             chunk_count = len(list(selection.chunk_locations()))
-            yield 0, f"Exporting {os.path.basename(path)}"
+            yield 0, lang.get("program_3d_edit.export.progress").format(
+                name=os.path.basename(path)
+            )
             for chunk_index, (cx, cz) in enumerate(selection.chunk_locations()):
                 try:
                     chunk = world.get_chunk(cx, cz, dimension)
@@ -103,11 +105,11 @@ class ExportConstruction(SimpleOperationPanel):
             wrapper.close()
         else:
             raise OperationError(
-                "Please specify a save location and version in the options before running."
+                lang.get("program_3d_edit.export.missing_path_version")
             )
 
 
 export = {
-    "name": "\tExport Construction",  # the name of the plugin
+    "name": "\t" + lang.get("program_3d_edit.export.construction.name"),
     "operation": ExportConstruction,  # the UI class to display
 }

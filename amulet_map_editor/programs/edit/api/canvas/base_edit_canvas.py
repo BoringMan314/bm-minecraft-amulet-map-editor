@@ -193,6 +193,9 @@ class BaseEditCanvas(EventCanvas):
                         lang.get("program_3d_edit.canvas.retry_download"),
                         style=wx.YES_NO,
                     )
+                    msg.SetYesNoLabels(
+                        lang.get("shared.yes"), lang.get("shared.no")
+                    )
                     log.debug(f"Showing retry download dialog at {msg.GetRect()}")
                     if msg.ShowModal() == wx.ID_NO:
                         break
