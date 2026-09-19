@@ -79,7 +79,7 @@ class DefaultBaseToolUI(BaseToolUI):
                     msg = lang.get("program_3d_edit.import.no_loader").format(
                         path=pathname
                     )
-                    wx.MessageBox(msg)
+                    wx.MessageBox(msg, lang.get("shared.message"))
                     log.error(msg)
                 except Exception as e:
                     log.error(f"Could not open {pathname}.", exc_info=True)

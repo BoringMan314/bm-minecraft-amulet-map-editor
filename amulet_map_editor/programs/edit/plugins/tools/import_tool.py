@@ -67,7 +67,7 @@ class ImportTool(wx.BoxSizer, DefaultBaseToolUI):
         except LoaderNoneMatched:
             msg = lang.get("program_3d_edit.import.no_loader").format(path=pathname)
             log.error(msg)
-            wx.MessageBox(msg)
+            wx.MessageBox(msg, lang.get("shared.message"))
         except Exception as e:
             log.error(f"Could not open {pathname}.", exc_info=True)
             with TracebackDialog(

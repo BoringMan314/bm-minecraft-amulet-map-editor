@@ -300,7 +300,9 @@ class EditCanvas(BaseEditCanvas):
                             msg=msg
                         )
                     log.info(msg)
-                    with wx.MessageDialog(self, msg, style=wx.OK) as dialog:
+                    with wx.MessageDialog(
+                        self, msg, lang.get("shared.message"), style=wx.OK
+                    ) as dialog:
                         dialog.SetOKLabel(lang.get("shared.ok"))
                         log.debug(f"Showing operation message at {dialog.GetRect()}")
                         dialog.ShowModal()
@@ -381,7 +383,10 @@ class EditCanvas(BaseEditCanvas):
         if structure_cache:
             self.paste(*structure_cache.get_structure())
         else:
-            wx.MessageBox(lang.get("program_3d_edit.paste_tool.copy_required"))
+            wx.MessageBox(
+                lang.get("program_3d_edit.paste_tool.copy_required"),
+                lang.get("shared.message"),
+            )
 
     def delete(self):
         self.run_operation(

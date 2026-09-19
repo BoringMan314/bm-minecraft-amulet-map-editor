@@ -201,6 +201,7 @@ class EditExtension(wx.Panel, BaseProgram):
                     count=unsaved_changes,
                     name=self._world.level_wrapper.level_name,
                 ),
+                lang.get("program_3d_edit.close.unsaved_changes_title"),
                 style=wx.YES_NO | wx.CANCEL | wx.CANCEL_DEFAULT,
             )
             msg.SetYesNoCancelLabels(

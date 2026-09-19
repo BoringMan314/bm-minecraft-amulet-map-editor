@@ -555,7 +555,10 @@ class PasteTool(wx.BoxSizer, DefaultBaseToolUI):
         elif structure_cache:
             structure, dimension = structure_cache.get_structure()
         else:
-            wx.MessageBox(lang.get("program_3d_edit.paste_tool.copy_required"))
+            wx.MessageBox(
+                lang.get("program_3d_edit.paste_tool.copy_required"),
+                lang.get("shared.message"),
+            )
             return
 
         self._paste_panel.Enable()

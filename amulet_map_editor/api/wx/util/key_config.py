@@ -511,6 +511,7 @@ class KeyConfig(wx.BoxSizer):
             msg = wx.MessageDialog(
                 self._options,
                 lang.get("key_config.active_not_editable"),
+                lang.get("shared.message"),
                 style=wx.YES_NO,
             )
             msg.SetYesNoLabels(lang.get("shared.yes"), lang.get("shared.no"))
